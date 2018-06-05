@@ -7,9 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.jdbc.core.JdbcTemplate;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +18,8 @@ import java.util.stream.Collectors;
 
 @SpringBootApplication
 @EnableScheduling
-public class AllSpringApplication {
+//public class AllSpringApplication {
+public class AllSpringApplication implements CommandLineRunner {
 
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(AllSpringApplication.class);
 
@@ -33,12 +35,12 @@ public class AllSpringApplication {
         return builder.build();
     }
 
-    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-        return args -> {
-            Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
-            log.info(quote.toString());
-        };
-    }
+//    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+//        return args -> {
+//            Quote quote = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+//            log.info(quote.toString());
+//        };
+//    }
 
     public void run(String... strings) throws Exception {
         log.info("Creating tables");
